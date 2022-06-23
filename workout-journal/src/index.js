@@ -1,18 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 // import App from './App';
-import Form from "./form"
+import SignUpForm from "./SignUpForm"
+import LoginForm from "./loginForm"
 import reportWebVitals from './reportWebVitals';
 
 const Container = () => {
-  const initialState = {
-    newUser: true
-  }
+  const [isNewUser, setIsNewUser] = useState(false)
+
+  const swapUserState = () => {setIsNewUser(!isNewUser)}
+
   return (
     <div>
       <h1>React sucks the biggest ball</h1>
-          <Form />
+          {isNewUser ? <SignUpForm setIsNewUser={swapUserState} /> : <LoginForm setIsNewUser={swapUserState}/>}
     </div>
   )
 }
